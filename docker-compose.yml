@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  web:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - db
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: mayuri
+      POSTGRES_PASSWORD: mayuripass
+      POSTGRES_DB: mayuri
+    ports:
+      - "5432:5432"
